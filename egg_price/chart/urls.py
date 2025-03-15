@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views  # Ensure views are correctly imported
+from . import views
 
 urlpatterns = [
-    path('', views.Chart.as_view(), name='chart'),
+    path('', views.chart_view, name='chart'),
 ]

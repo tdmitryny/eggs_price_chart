@@ -1,0 +1,2 @@
+# Run egg price update daily at 00:01 AM
+1 0 * * * /Users/dmitrytsuverkalov/Desktop/egg_chart/update_prices.sh >> /Users/dmitrytsuverkalov/Desktop/egg_chart/cron.log 2>&1

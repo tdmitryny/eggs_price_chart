@@ -5,20 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Egg Price Tracker{% endblock %}</title>
 
-    {% comment %} <!-- Bootstrap (Optional) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-
+    <!-- Bootstrap (Optional) -->
+    <link rel="stylesheet" href="https://bootswatch.com/5/litera/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+   {% load static %}
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'style.css' %}"> 
 
     {% comment %} {% block extra_head %}{% endblock %} {% endcomment %}
 </head>
 <body>
 
     <!-- Navbar -->
-  
-<h1>hello</h1>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+            <div class="container">
+                <!-- Brand/logo -->
+                <a class="navbar-brand d-flex align-items-center" href="/">
+                    <i class="fas fa-egg me-2"></i>
+                    <span>Egg Price Charts</span>
+                </a>
+                
+                <!-- Toggler for mobile -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                {}
+                
+                <!-- Navbar links -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/"><i class="fas fa-home me-1"></i>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog"><i class="fas fa-chart-line me-1"></i>Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i>About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>   
+    
     <!-- Main Content -->
+   
     <div class="container mt-4">
         {% block content %}
         <!-- Child templates will insert content here -->
@@ -26,12 +60,41 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3 mt-4">
-        <p>&copy; 2025 My Website. All Rights Reserved.</p>
-    </footer>
+  
+        <footer class="bg-primary text-white py-4 mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <h5 class="mb-3"><i class="fas fa-egg me-2"></i>Egg Price Charts</h5>
+                        <p class="small">Tracking and analyzing egg prices to help you make informed decisions.</p>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <h5 class="mb-3">Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="/" class="text-white text-decoration-none">Home</a></li>
+                            <li><a href="/blog" class="text-white text-decoration-none">Blog</a></li>
+                            <li><a href="/about" class="text-white text-decoration-none">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <h5 class="mb-3">Follow Us</h5>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                            <a href="#" class="text-white"><i class="fab fa-github fa-lg"></i></a>
+                            <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-3">
+                <div class="text-center">
+                    <small>&copy; 2025 Egg Price Charts. All rights reserved.</small>
+                </div>
+            </div>
+        </footer>
+    
 
     <!-- Bootstrap JS (Optional) -->
-    {% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> {% endcomment %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
 
     {% comment %} {% block extra_js %}{% endblock %} {% endcomment %}
 </body>

@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   web-app:
     build:
@@ -6,5 +8,10 @@ services:
       - "8000:8000" 
     volumes:
       - ./egg_price:/egg_price
+    environment:
+      - DEBUG=1
+      - DJANGO_SETTINGS_MODULE=eggchart.settings
     command: >
-      sh -c "python3 manage.py runserver 0.0.0.0:8000"
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --no-input &&
+             python manage.py runserver 0.0.0.0:8000"

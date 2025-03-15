@@ -1,7 +1,73 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Egg Price Chart</h2>
+                    {% if latest_price %}
+                    <div class="alert alert-info">
+                        Latest Price: ${{ latest_price }} ({{ latest_date }})
+                    </div>
+                    {% endif %}
+                    <canvas id="eggPriceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h1>Hello</h1>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+(function() {
+    'use strict';
+    
+    const chartData = {
+        dates: {{ dates|safe }},
+        prices: {{ prices|safe }}
+    };
+
+    const ctx = document.getElementById('eggPriceChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: chartData.dates,
+            datasets: [{
+                label: 'Egg Price ($)',
+                data: chartData.prices,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    title: {
+                        display: true,
+                        text: 'Price ($)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Egg Price Trends (Last 30 Days)'
+                }
+            }
+        }
+    });
+})();
+</script>
 {% endblock %}
